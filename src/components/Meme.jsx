@@ -12,13 +12,11 @@ export default function Meme() {
 
   function generate(e) {
     e.preventDefault();
-    // console.log(allMemes);
     let { data } = allMemes;
     const indx = Math.ceil(Math.random() * data.memes.length);
     setMemeData((prevData) => {
       return { ...prevData, url: data.memes[indx].url };
     });
-    // console.log(memeData.url);
   }
 
   function handleChange(e) {
@@ -34,7 +32,6 @@ export default function Meme() {
   useEffect(() => {
     const fetchData = async () => {
       const data = await axios.get("https://api.imgflip.com/get_memes");
-      // console.log(data.data);
       setAllMemes(data.data);
     };
     fetchData();
